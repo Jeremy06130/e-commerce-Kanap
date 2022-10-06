@@ -1,9 +1,10 @@
 //------------------------------------------------------------------------
 // Récupération des produits de l'api
-
 fetch("http://localhost:5500/api/products")
+
   // quand tu as la réponse donne le résultat en json.
   .then((res) => res.json())
+
   // ce que l'on a reçu et qui a été traité en json sera appelé objetProduits
   .then((objetProduits) => {
     // donne moi des informations en console sur ce qui est récupéré sous forme tableau.
@@ -11,6 +12,7 @@ fetch("http://localhost:5500/api/products")
     // appel de la fonction d'affichage des produits
     lesKanaps(objetProduits);
   })
+
   // dans le cas d'une erreur remplace le contenu de titre par un h1 au contenu de erreur 404 et renvoit en console l'erreur.
   .catch((err) => {
     document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
@@ -20,6 +22,7 @@ fetch("http://localhost:5500/api/products")
 
 // fonction d'affichage des produits de l'api sur la page index
 function lesKanaps(index) {
+    
   // déclaration de variable de la zone d'article
   let zoneArticle = document.querySelector("#items");
 
