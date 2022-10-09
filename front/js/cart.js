@@ -1,9 +1,6 @@
 // pour différancier la page confirmation et panier
 const page = document.location.href;
-
-
 // Récupération des produits de l'api
-
 // appel de la ressource api product (voir script.js) si on est sur la page panier
 if (page.match("cart")) {
 fetch("http://localhost:5500/api/products")
