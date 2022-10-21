@@ -94,4 +94,4 @@ Pour consulter votre panier, cliquez sur OK`)){
             window.location.href ="cart.html";
         }
     }
-    
+}
