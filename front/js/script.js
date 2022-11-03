@@ -8,41 +8,35 @@ async function getArticles() {
 
 // Répartition des données de l'API dans le DOM
 async function fillSection() {
-    let result = await getArticles()
-        .then(function (resultatAPI) {
-            const articles = resultatAPI;
-            console.table(articles);
-            for (let article in articles) {
+    const articles = await getArticles()
+    console.log(articles)
+    articles.forEach(article => {
 
-                // Insertion de l'élément "a"
-                let productLink = document.createElement("a");
-                document.querySelector(".items").appendChild(productLink);
-                productLink.href = `product.html?id=${resultatAPI[article]._id}`;
+        // Insertion de l'élément "a"
+        const productLink = document.createElement("a");
+        document.querySelector(".items").appendChild(productLink);
+        productLink.href = `product.html?id=${article._id}`;
 
-                // Insertion de l'élément "article"
-                let productArticle = document.createElement("article");
-                productLink.appendChild(productArticle);
+        // Insertion de l'élément "article"
+        const productArticle = document.createElement("article");
+        productLink.appendChild(productArticle);
 
-                // Insertion de l'image
-                let productImg = document.createElement("img");
-                productArticle.appendChild(productImg);
-                productImg.src = resultatAPI[article].imageUrl;
-                productImg.alt = resultatAPI[article].altTxt;
+        // Insertion de l'image
+        const productImg = document.createElement("img");
+        productArticle.appendChild(productImg);
+        productImg.src = article.imageUrl;
+        productImg.alt = article.altTxt;
 
-                // Insertion du titre "h3"
-                let productName = document.createElement("h3");
-                productArticle.appendChild(productName);
-                productName.classList.add("productName");
-                productName.innerHTML = resultatAPI[article].name;
+        // Insertion du titre "h3"
+        const productName = document.createElement("h3");
+        productArticle.appendChild(productName);
+        productName.classList.add("productName");
+        productName.innerHTML = article.name;
 
-                // Insertion de la description "p"
-                let productDescription = document.createElement("p");
-                productArticle.appendChild(productDescription);
-                productDescription.classList.add("productName");
-                productDescription.innerHTML = resultatAPI[article].description;
-            }
-        })
-        .catch(function (error) {
-            return error;
-        });
+        // Insertion de la description "p"
+        const productDescription = document.createElement("p");
+        productArticle.appendChild(productDescription);
+        productDescription.classList.add("productName");
+        productDescription.innerHTML = article.description;
+    })
 }
