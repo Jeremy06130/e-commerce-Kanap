@@ -14,9 +14,16 @@ getArticle();
 
 // Récupération des articles de l'API
 async function getArticle() {
-     await fetch("http://localhost:3000/api/products/" + idProduct)
-    .then((response) => response.json())    
-    .then(product => {
+    let articlesCatch = await fetch("http://localhost:3000/api/products/" + idProduct)
+    return await articlesCatch.json();
+}
+
+// Répartition des données de l'API dans le DOM
+async function getArticles() {
+    const articles = await getArticles()
+    console.log(articles)
+    articles.forEach(article => {
+
         img.setAttribute("src", product.imageUrl);
         img.setAttribute("alt", product.altTxt);    
         titleProduct.innerHTML = product.name;
